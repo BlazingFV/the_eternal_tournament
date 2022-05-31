@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(
       minTextAdapt: true,
       designSize:
-          GetPlatform.isMobile ? const Size(428, 926) : const Size(1728, 1117),
+         Get.size.width<500? const Size(428, 926) : const Size(1728, 1117),
       // designSize: const Size(428,926),
       builder: (context, child) => GetMaterialApp(
         title: 'The Eternal Tournament',
@@ -117,14 +117,14 @@ class MyApp extends StatelessWidget {
       
       ResponsiveConfig(
         tablet:  LoginPage(
-          isMobile: GetPlatform.isMobile,
+          isMobile:  Get.size.width<500,
         ),
         desktop:  LoginPage(
-          isMobile: GetPlatform.isMobile,
+          isMobile:  Get.size.width<500,
         ),
         
         mobile: LoginPage(
-          isMobile: GetPlatform.isMobile,
+          isMobile:  Get.size.width<500,
         ),
         
       ),

@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -57,6 +59,12 @@ class _LoginPageForMobileState extends State<LoginPageForMobile> {
 
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.init(
+     context,
+     designSize: const Size(428, 926),
+      minTextAdapt: true,
+      
+    );
     return Scaffold(
       // backgroundColor: AppConfigs.loginPageBGColor,
       body: Stack(

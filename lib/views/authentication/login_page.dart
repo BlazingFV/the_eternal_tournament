@@ -62,7 +62,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     log('=========================Screen Width: ${ScreenUtil().screenWidth}=========================');
     log('=========================Screen Height: ${ScreenUtil().screenHeight}=========================');
-    return GetPlatform.isMobile&&ScreenUtil().screenWidth<500
+    return ScreenUtil().screenWidth<500
         ? LoginPageForMobile()
         : LoginPageForWebAndTablet(
             scrollController: _scrollController,
