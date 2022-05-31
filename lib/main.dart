@@ -1,11 +1,20 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:the_eternal_tournament/views/authentication/login_page.dart';
+import 'package:the_eternal_tournament/views/authentication/widgets/login_page_mobile_widget.dart';
 
-void main() async{
-   WidgetsFlutterBinding.ensureInitialized();
+import 'configs/responsive_configs.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    statusBarColor: Colors.transparent,
+  ));
   runApp(const MyApp());
 }
 
@@ -17,9 +26,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       minTextAdapt: true,
-      designSize: const Size(1728, 1117),
+      designSize:
+          GetPlatform.isMobile ? const Size(428, 926) : const Size(1728, 1117),
+      // designSize: const Size(428,926),
       builder: (context, child) => GetMaterialApp(
-        title: 'Flutter Demo',
+        title: 'The Eternal Tournament',
         debugShowCheckedModeBanner: false,
         builder: (context, widget) => ResponsiveWrapper.builder(
           BouncingScrollWrapper.builder(context, widget!),
@@ -40,9 +51,11 @@ class MyApp extends StatelessWidget {
             ResponsiveBreakpoint.resize(320, name: MOBILE, scaleFactor: 0.95),
             ResponsiveBreakpoint.resize(350, name: MOBILE, scaleFactor: 0.95),
             ResponsiveBreakpoint.resize(375, name: MOBILE, scaleFactor: 0.95),
+            ResponsiveBreakpoint.resize(390, name: MOBILE, scaleFactor: 0.95),
             ResponsiveBreakpoint.resize(400, name: MOBILE, scaleFactor: 0.95),
+            ResponsiveBreakpoint.resize(425, name: MOBILE, scaleFactor: 0.95),
             ResponsiveBreakpoint.resize(450, name: MOBILE),
-            ResponsiveBreakpoint.resize(500, name: MOBILE, scaleFactor: 1),
+            ResponsiveBreakpoint.resize(500, name: TABLET, scaleFactor: 1),
             ResponsiveBreakpoint.resize(510, name: TABLET),
             ResponsiveBreakpoint.resize(520, name: TABLET),
             ResponsiveBreakpoint.resize(530, name: TABLET),
@@ -96,7 +109,25 @@ class MyApp extends StatelessWidget {
         ),
         home: child,
       ),
-      child: const LoginPage(),
+      child:
+      
+      
+      //  LoginPageForMobile()
+      
+      
+      ResponsiveConfig(
+        tablet:  LoginPage(
+          isMobile: GetPlatform.isMobile,
+        ),
+        desktop:  LoginPage(
+          isMobile: GetPlatform.isMobile,
+        ),
+        
+        mobile: LoginPage(
+          isMobile: GetPlatform.isMobile,
+        ),
+        
+      ),
     );
   }
 }

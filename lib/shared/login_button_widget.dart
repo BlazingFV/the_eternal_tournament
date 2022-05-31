@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LoginButtonWidget extends StatelessWidget {
@@ -21,8 +22,8 @@ class LoginButtonWidget extends StatelessWidget {
       onTap:onClickButton,
       child: Container(
         alignment: Alignment.centerLeft,
-        width: 514.w,
-        height: 68.h,
+        width:ScreenUtil().screenWidth<500?348.w: 514.w,
+        height:ScreenUtil().screenWidth<500?46 :68.h,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(440.r),
           gradient: const LinearGradient(
@@ -40,8 +41,8 @@ class LoginButtonWidget extends StatelessWidget {
           children: [
             Container(
               padding: EdgeInsets.fromLTRB(10.w, 10.h, 10.w, 10.h),
-              height: 56.h,
-              width: 56.h,
+              height:ScreenUtil().screenWidth<500?36.h: 56.h,
+              width:ScreenUtil().screenWidth<500?36.w: 56.w,
               margin: EdgeInsets.only(left:6.w,top: 6.h, bottom: 6.h),
               decoration: const BoxDecoration(
                 color: Colors.white,
@@ -54,7 +55,7 @@ class LoginButtonWidget extends StatelessWidget {
               ),
             ),
             SizedBox(
-              width: 105.w,
+              width:ScreenUtil().screenWidth<500?60.w: 105.w,
             ),
             Center(
               child: AutoSizeText(
@@ -62,7 +63,7 @@ class LoginButtonWidget extends StatelessWidget {
                 style: GoogleFonts.poppins(
                   fontWeight: FontWeight.w500,
                   color: Colors.white,
-                  fontSize: ScreenUtil().setSp(24),
+                  fontSize:ScreenUtil().screenWidth<500?ScreenUtil().setSp(16) :ScreenUtil().setSp(24),
                 ),
               ),
             )
